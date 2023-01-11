@@ -1,7 +1,7 @@
 import { browserLocalPersistence, setPersistence, signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../feautures/user/userSlice";
 import { auth } from "../../firebaseConfig";
 
@@ -67,7 +67,7 @@ export const Login = () => {
             </div>
             <div className="flex justify-evenly items-center bg-white text-center rounded-lg border-2 border-black border-solid py-1">
                 <p>Don't have an account?</p>
-                <a className="text-amber-600" href="/register">Sign up</a>
+                <Link className="text-amber-600" to="/register">Sign up</Link>
             </div>
         </div>
     );
