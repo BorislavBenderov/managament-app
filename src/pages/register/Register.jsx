@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export const Register = () => {
     return (
         <div className="w-80 my-12 mx-auto">
@@ -35,7 +37,7 @@ export const Register = () => {
             </div>
             <div className="flex justify-evenly items-center bg-white text-center rounded-lg border-2 border-black border-solid py-1">
                 <p>Have an account?</p>
-                <a className="text-amber-600" href="/register">Sign in</a>
+                <Link className="text-amber-600" to="/">Sign in</Link>
             </div>
         </div>
     );
