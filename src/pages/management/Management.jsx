@@ -1,8 +1,5 @@
 import { useState } from "react";
-import { CreateUser, EditUser } from "../../components";
-import { DeleteUser } from "../../components/delete-user/DeleteUser";
-import { UserDetails } from "../../components/user-details/UserDetails";
-import { User } from "../../components/user/User";
+import { CreateUser, EditUser, DeleteUser, UserDetails, User } from "../../components";
 
 export const Management = () => {
   const [createClick, setCreateClick] = useState(false);
