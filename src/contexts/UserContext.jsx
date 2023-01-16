@@ -24,6 +24,13 @@ export const UserContextProvider = ({ children }) => {
     });
   }, []);
 
+  const removeClickHandler = () => {
+    setCreateClick(false);
+    setDeleteClick(false);
+    setDetailsClick(false);
+    setEditClick(false);
+  };
+
   return (
     <UserContext.Provider
       value={{
@@ -37,6 +44,7 @@ export const UserContextProvider = ({ children }) => {
         setDeleteClick,
         detailsClick,
         setDetailsClick,
+        removeClickHandler
       }}
     >
       {children}
