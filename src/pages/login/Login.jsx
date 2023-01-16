@@ -42,7 +42,7 @@ export const Login = () => {
     return (
         <div className="w-80 my-12 mx-auto">
             <div className="bg-white px-10 pt-2 pb-24 mb-2 rounded-lg border-2 border-black border-solid">
-                <h1 className="mb-7 text-center text-2xl font-bold">Mangament App</h1>
+                <h1 className="mb-7 text-center text-2xl font-bold">Managament App</h1>
                 <form className="flex flex-col" onSubmit={onLogin}>
                     <label htmlFor="email" />
                     <input
