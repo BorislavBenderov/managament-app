@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import {
   CreateUser,
   EditUser,
@@ -9,11 +9,14 @@ import {
 import { UserContext } from "../../contexts/UserContext";
 
 export const Management = () => {
-  const { users } = useContext(UserContext);
-  const [createClick, setCreateClick] = useState(false);
-  const [editClick, setEditClick] = useState(false);
-  const [deleteClick, setDeleteClick] = useState(false);
-  const [detailsClick, setDetailsClick] = useState(false);
+  const {
+    users,
+    createClick,
+    editClick,
+    deleteClick,
+    detailsClick,
+    setCreateClick,
+  } = useContext(UserContext);
 
   return (
     <>
@@ -138,13 +141,7 @@ export const Management = () => {
           </thead>
           <tbody>
             {users.map((user) => (
-              <User
-                key={user.id}
-                user={user}
-                setEditClick={setEditClick}
-                setDetailsClick={setDetailsClick}
-                setDeleteClick={setDeleteClick}
-              />
+              <User key={user.id} user={user} />
             ))}
           </tbody>
         </table>
