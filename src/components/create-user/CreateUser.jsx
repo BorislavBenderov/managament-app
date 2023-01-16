@@ -1,4 +1,25 @@
+import { addDoc, collection } from "firebase/firestore";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
+import { database } from "../../firebaseConfig";
+
 export const CreateUser = () => {
+  const { removeClickHandler } = useContext(UserContext);
+
+  const onCreate = (e) => {
+    e.preventDefault();
+
+    const userData = Object.fromEntries(new FormData(e.target));
+
+    addDoc(collection(database, "files"), userData)
+      .then(() => {
+        removeClickHandler();
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+  };
+
   return (
     <div className="overlay">
       <div className="backdrop"></div>
@@ -6,7 +27,7 @@ export const CreateUser = () => {
         <div className="user-container">
           <header className="headers">
             <h2>Add User</h2>
-            <button className="btn close">
+            <button className="btn close" onClick={removeClickHandler}>
               <svg
                 aria-hidden="true"
                 focusable="false"
@@ -24,7 +45,7 @@ export const CreateUser = () => {
               </svg>
             </button>
           </header>
-          <form>
+          <form onSubmit={onCreate}>
             <div className="form-row">
               <div className="form-group">
                 <label htmlFor="firstName">First name</label>
@@ -110,6 +131,7 @@ export const CreateUser = () => {
                 id="action-cancel"
                 className="btn"
                 type="button"
+                onClick={removeClickHandler}
               >
                 Cancel
               </button>
