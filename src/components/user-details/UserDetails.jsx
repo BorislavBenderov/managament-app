@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 
 export const UserDetails = () => {
-  const { users, detailsClick } = useContext(UserContext);
+  const { users, detailsClick, removeClickHandler } = useContext(UserContext);
 
   const user = users.find((user) => user?.id === detailsClick);
 
@@ -13,7 +13,7 @@ export const UserDetails = () => {
         <div className="detail-container">
           <header className="headers">
             <h2>User Detail</h2>
-            <button className="btn close">
+            <button className="btn close" onClick={removeClickHandler}>
               <svg
                 aria-hidden="true"
                 focusable="false"
