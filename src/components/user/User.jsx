@@ -1,9 +1,9 @@
-export const User = ({
-  setEditClick,
-  setDetailsClick,
-  setDeleteClick,
-  user,
-}) => {
+import { useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
+
+export const User = ({ user }) => {
+  const { setDeleteClick, setDetailsClick, setEditClick } =
+    useContext(UserContext);
   return (
     <tr>
       <td>{user.firstName}</td>
@@ -16,7 +16,7 @@ export const User = ({
         <button
           className="btn edit-btn"
           title="Edit"
-          onClick={() => setEditClick(true)}
+          onClick={() => setEditClick(user.id)}
         >
           <svg
             aria-hidden="true"
@@ -37,7 +37,7 @@ export const User = ({
         <button
           className="btn delete-btn"
           title="Delete"
-          onClick={() => setDeleteClick(true)}
+          onClick={() => setDeleteClick(user.id)}
         >
           <svg
             aria-hidden="true"
@@ -58,7 +58,7 @@ export const User = ({
         <button
           className="btn info-btn"
           title="Info"
-          onClick={() => setDetailsClick(true)}
+          onClick={() => setDetailsClick(user.id)}
         >
           <svg
             aria-hidden="true"
