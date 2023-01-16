@@ -1,12 +1,17 @@
-export const User = ({setEditClick, setDetailsClick, setDeleteClick}) => {
+export const User = ({
+  setEditClick,
+  setDetailsClick,
+  setDeleteClick,
+  user,
+}) => {
   return (
     <tr>
-      <td>Borko</td>
-      <td>Benderov</td>
-      <td>borko@abv.bg</td>
-      <td>0897534563</td>
-      <td>nz</td>
-      <td>paid</td>
+      <td>{user.firstName}</td>
+      <td>{user.lastName}</td>
+      <td>{user.email}</td>
+      <td>{user.phoneNumber}</td>
+      <td>{user.insurancePrice}</td>
+      <td>{user.paid ? "Paid" : "Unpaid"}</td>
       <td className="actions">
         <button
           className="btn edit-btn"
