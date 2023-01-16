@@ -6,6 +6,7 @@ import {
   UserDetails,
   User,
 } from "../../components";
+import { Logout } from "../../components/logout/Logout";
 import { UserContext } from "../../contexts/UserContext";
 
 export const Management = () => {
@@ -146,9 +147,12 @@ export const Management = () => {
           </tbody>
         </table>
       </div>
-      <button className="btn-add btn" onClick={() => setCreateClick(true)}>
-        Add new user
-      </button>
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <button className="btn-add btn" onClick={() => setCreateClick(true)}>
+          Add new user
+        </button>
+        <Logout />
+      </div>
     </>
   );
 };
