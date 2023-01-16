@@ -1,7 +1,15 @@
-import { useState } from "react";
-import { CreateUser, EditUser, DeleteUser, UserDetails, User } from "../../components";
+import { useContext, useState } from "react";
+import {
+  CreateUser,
+  EditUser,
+  DeleteUser,
+  UserDetails,
+  User,
+} from "../../components";
+import { UserContext } from "../../contexts/UserContext";
 
 export const Management = () => {
+  const { users } = useContext(UserContext);
   const [createClick, setCreateClick] = useState(false);
   const [editClick, setEditClick] = useState(false);
   const [deleteClick, setDeleteClick] = useState(false);
@@ -129,11 +137,15 @@ export const Management = () => {
             </tr>
           </thead>
           <tbody>
-            <User
-              setEditClick={setEditClick}
-              setDetailsClick={setDetailsClick}
-              setDeleteClick={setDeleteClick}
-            />
+            {users.map((user) => (
+              <User
+                key={user.id}
+                user={user}
+                setEditClick={setEditClick}
+                setDetailsClick={setDetailsClick}
+                setDeleteClick={setDeleteClick}
+              />
+            ))}
           </tbody>
         </table>
       </div>
