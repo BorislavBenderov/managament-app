@@ -1,4 +1,11 @@
+import { useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
+
 export const UserDetails = () => {
+  const { users, detailsClick } = useContext(UserContext);
+
+  const user = users.find((user) => user?.id === detailsClick);
+
   return (
     <div className="overlay">
       <div className="backdrop" />
@@ -37,17 +44,17 @@ export const UserDetails = () => {
                 Full Name:
                 <strong>
                   {" "}
-                  {"Borko"} {"Benderov"}{" "}
+                  {user.firstName} {user.lastName}{" "}
                 </strong>
               </p>
               <p>
-                Email: <strong>{"borko@abv.bg"}</strong>
+                Email: <strong>{user.email}</strong>
               </p>
               <p>
-                Phone Number: <strong>{"t5565435"}</strong>
+                Phone Number: <strong>{user.phoneNumber}</strong>
               </p>
-              <p>Insurance: 265$</p>
-              <p>Paid: Yes</p>
+              <p>Insurance: {user.insurancePrice}$</p>
+              <p>Paid: {user.paid ? "Paid" : "Unpaid"}</p>
             </div>
           </div>
         </div>
