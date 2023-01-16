@@ -1,15 +1,29 @@
+import { deleteDoc, doc } from "firebase/firestore";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
+import { database } from "../../firebaseConfig";
+
 export const DeleteUser = () => {
+  const { deleteClick, removeClickHandler } = useContext(UserContext);
+
+  const onDelete = () => {
+    deleteDoc(doc(database, "files", deleteClick))
+      .then(() => {
+        removeClickHandler();
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+  };
+
   return (
     <div className="overlay">
       <div className="backdrop"></div>
       <div className="modal">
         <div className="confirm-container">
           <header className="headers">
-            <h2>
-              Are you sure you want to delete Borko Benderov{" "}
-              account?
-            </h2>
-            <button className="btn close" >
+            <h2>Are you sure you want to delete this account?</h2>
+            <button className="btn close" onClick={removeClickHandler}>
               <svg
                 aria-hidden="true"
                 focusable="false"
@@ -29,14 +43,19 @@ export const DeleteUser = () => {
           </header>
           <div className="actions">
             <div id="form-actions">
-              <button id="action-save" className="btn" type="submit">
+              <button
+                id="action-save"
+                className="btn"
+                type="submit"
+                onClick={onDelete}
+              >
                 Delete
               </button>
               <button
                 id="action-cancel"
                 className="btn"
                 type="button"
-
+                onClick={removeClickHandler}
               >
                 Cancel
               </button>
